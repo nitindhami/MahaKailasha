@@ -351,6 +351,7 @@
 "Assets/FlashGame/Scripts/DataContainers/AppData.cs"
 "Assets/FlashGame/Scripts/DataContainers/CardData.cs"
 "Assets/FlashGame/Scripts/Helpers/CardPrefab.cs"
+"Assets/FlashGame/Scripts/Manager/GameStatsManager.cs"
 "Assets/FlashGame/Scripts/Manager/GridManager.cs"
 "Assets/LeanTween/Framework/LeanAudio.cs"
 "Assets/LeanTween/Framework/LeanSmooth.cs"
