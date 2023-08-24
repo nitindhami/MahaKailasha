@@ -50,7 +50,7 @@ public class CardPrefab : MonoBehaviour
 
     void ShowCard()
     {
-        LeanTween.rotate(hideCardObj.gameObject, new Vector3(0f, 90f, 0f), 0.25f)
+        LeanTween.rotate(hideCardObj.gameObject, new Vector3(0f, 90f, 0f), 0.15f)
     .setEase(LeanTweenType.easeOutCubic)
     .setOnComplete(OnShowAnimationCompleted);
 
@@ -58,7 +58,6 @@ public class CardPrefab : MonoBehaviour
 
     void OnShowAnimationCompleted()
     {
-
         _cardImage.gameObject.SetActive(true);
         hideCardObj.gameObject.SetActive(false);
         hideCardObj.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -66,9 +65,10 @@ public class CardPrefab : MonoBehaviour
     }
    public void HideCard()
     {
-        LeanTween.rotate(_cardImage.gameObject, new Vector3(0f, 90f, 0f), 0.25f)
+        LeanTween.rotate(_cardImage.gameObject, new Vector3(0f, 90f, 0f), 0.15f)
             .setEase(LeanTweenType.easeOutCubic)
             .setOnComplete(OnHidingCompleted);
+        isOpen = false;
 
     }
     void OnHidingCompleted()

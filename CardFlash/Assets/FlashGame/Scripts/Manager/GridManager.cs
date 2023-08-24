@@ -9,6 +9,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] CardPrefab _cardPrefab;
     [SerializeField] Transform _rowParent;
     [SerializeField] List<CardPrefab> cardPrefabs = new List<CardPrefab>();
+
     AppData data;
     private void Start()
     {

@@ -1,17 +1,16 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
     public static GameController s_Instance;
     [SerializeField] AudioSource _dingSource;
+    [SerializeField] AudioSource _wrongSource;
     [SerializeField] GameStatsManager GameStats;
     int turnCount=0;
     int ScoreCount=0;
     CardData previousCard = null;
-    CardData currentCard = null;
     public Action onHideAllCards;
     public Action<int> onMatchFound;
     public Action onResetCards;
@@ -39,8 +38,7 @@ public class GameController : MonoBehaviour
     public void FlashCardClicked(CardData card)
     {
 
-       
-        Debug.Log(card.cardObj.name);
+         Debug.Log(card.cardObj.name);
         if (previousCard == null)
         {
             previousCard = card;
@@ -52,7 +50,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator EvaluateData(CardData card)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.18f);
         if (card.CardCode == previousCard.CardCode)
         {
             
@@ -66,6 +64,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            _wrongSource.Play();
             Debug.Log("Not Found:");
             onResetCards?.Invoke();
             previousCard = null;

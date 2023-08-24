@@ -9,7 +9,9 @@ public class AppDataController : MonoBehaviour
 
     public AppData GameData { get { return _appData; } }
     public Dictionary<int, CardData> GameMap = new Dictionary<int, CardData>();
+    Dictionary<int, int> SaveMap =  new Dictionary<int, int>(); 
     public Action onGamMapCreated;
+    
     public static AppDataController s_Instance;
 
     #region Unity_CallBacks
@@ -51,14 +53,13 @@ public class AppDataController : MonoBehaviour
                     yield return null;
                 }
                 GameMap.Add(randNext, _appData.flashCards[val]);
+                map+= randNext+":"+val+"|";
             }
 
         }
-       Debug.Log( JsonUtility.ToJson(GameMap));
-       //t foreach (var item in GameMap)
-       //t {
-       //t     Debug.Log(item.Key+" : Value"+item.Value.CardCode);
-       //t }
+       Debug.Log(map);
+        PlayerPrefs.SetString(Constants.SAVED_GAME_MAP,map);
         onGamMapCreated?.Invoke();
     }
+    string map;
 }
