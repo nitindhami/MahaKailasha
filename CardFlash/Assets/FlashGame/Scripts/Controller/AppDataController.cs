@@ -54,11 +54,11 @@ public class AppDataController : MonoBehaviour
             }
 
         }
-
-        foreach (var item in GameMap)
-        {
-            Debug.Log(item.Key+" : Value"+item.Value.CardCode);
-        }
+       Debug.Log( JsonUtility.ToJson(GameMap));
+       //t foreach (var item in GameMap)
+       //t {
+       //t     Debug.Log(item.Key+" : Value"+item.Value.CardCode);
+       //t }
         onGamMapCreated?.Invoke();
     }
 }

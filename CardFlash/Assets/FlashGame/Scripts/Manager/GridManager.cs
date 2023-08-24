@@ -39,7 +39,8 @@ public class GridManager : MonoBehaviour
         for (int i = 0; i < data.ColCount* data.RowCount ; i++)
         {
             if(AppDataController.s_Instance.GameMap.ContainsKey(i))
-            cardPrefabs[i].Init(AppDataController.s_Instance.GameMap[i]);
+            cardPrefabs[i].Init(AppDataController.s_Instance.GameMap[i],
+                GameController.s_Instance.FlashCardClicked);
         }
 
     }

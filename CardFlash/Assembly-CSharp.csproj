@@ -62,6 +62,35 @@
     <Compile Include="Assets/uGUITools.cs" />
     <Compile Include="Assets/FlashGame/Scripts/Manager/GridManager.cs" />
     <Compile Include="Assets/FlashGame/Scripts/DataContainers/AppData.cs" />
+    <Compile Include="Assets/FlashGame/Scripts/Controller/GameController.cs" />
+    <Compile Include="Assets/LeanTween/Testing/Testing240.cs" />
+    <Compile Include="Assets/LeanTween/Testing/TestingRotate.cs" />
+    <Compile Include="Assets/LeanTween/Testing/TestingOptionalCancel.cs" />
+    <Compile Include="Assets/LeanTween/Framework/LeanTest.cs" />
+    <Compile Include="Assets/LeanTween/Testing/TestingIssue2.cs" />
+    <Compile Include="Assets/LeanTween/Framework/LeanAudio.cs" />
+    <Compile Include="Assets/LeanTween/Testing/TestingSequencer.cs" />
+    <Compile Include="Assets/LeanTween/Framework/LTDescrOptional.cs" />
+    <Compile Include="Assets/LeanTween/Framework/LeanTween.cs" />
+    <Compile Include="Assets/LeanTween/Testing/PerformanceTests.cs" />
+    <Compile Include="Assets/LeanTween/Testing/Testing243.cs" />
+    <Compile Include="Assets/LeanTween/Testing/Scripts/LeanPool.cs" />
+    <Compile Include="Assets/LeanTween/Testing/TestingColorTweening.cs" />
+    <Compile Include="Assets/LeanTween/Testing/TestingIssue.cs" />
+    <Compile Include="Assets/LeanTween/Testing/Testing248.cs" />
+    <Compile Include="Assets/LeanTween/Framework/LeanSmooth.cs" />
+    <Compile Include="Assets/LeanTween/Testing/FollowingTests.cs" />
+    <Compile Include="Assets/LeanTween/Testing/TestingSceneSwitching.cs" />
+    <Compile Include="Assets/LeanTween/Testing/TestingMaxTweens.cs" />
+    <Compile Include="Assets/LeanTween/Framework/LTDescr.cs" />
+    <Compile Include="Assets/LeanTween/Framework/LTSeq.cs" />
+    <Compile Include="Assets/LeanTween/Testing/TestingDescr.cs" />
+    <Compile Include="Assets/LeanTween/Testing/Testing246.cs" />
+    <Compile Include="Assets/LeanTween/Framework/LeanTweenExt.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets/LeanTween/ReadMe.txt" />
+    <None Include="Assets/LeanTween/License.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
