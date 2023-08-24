@@ -345,6 +345,7 @@
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/UnityEngine.UI.ref.dll"
+"Assets/FlashGame/Scripts/Constants/Constants.cs"
 "Assets/FlashGame/Scripts/Controller/AppDataController.cs"
 "Assets/FlashGame/Scripts/Controller/GameController.cs"
 "Assets/FlashGame/Scripts/DataContainers/AppData.cs"

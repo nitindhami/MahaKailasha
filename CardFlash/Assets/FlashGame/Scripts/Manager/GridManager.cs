@@ -43,6 +43,11 @@ public class GridManager : MonoBehaviour
                 GameController.s_Instance.FlashCardClicked);
         }
 
+        Invoke("HideCards",Constants.HIDE_CARDS_DURATION);
     }
 
+    void HideCards() {
+
+        GameController.s_Instance.HideCards();
+    }
 }

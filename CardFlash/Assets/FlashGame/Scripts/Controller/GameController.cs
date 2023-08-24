@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class GameController : MonoBehaviour
     int ScoreCount=0;
     CardData previousCard = null;
     CardData currentCard = null;
+    public Action onHideAllCards;
     #region Unity_CallBack
 
     private void Awake()
@@ -23,9 +25,13 @@ public class GameController : MonoBehaviour
     }
     private void OnDestroy()
     {
-        
+        onHideAllCards = null;
     }
     #endregion
+    public void HideCards()
+    {
+        onHideAllCards?.Invoke();
+    }
     public void FlashCardClicked(CardData card)
     {
 

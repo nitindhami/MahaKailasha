@@ -335,4 +335,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardImage: {fileID: 3121700741631052752}
   hideCardObj: {fileID: 5335265275136029887}
-  button: {fileID: 530620817767191632}
+  _closeCardButton: {fileID: 530620817767191632}
+  _openCardButton: {fileID: 2867263319439143832}

@@ -8,12 +8,17 @@ public class CardPrefab : MonoBehaviour
     CardData data;
     [SerializeField] Image _cardImage;
     [SerializeField] GameObject hideCardObj;
-    [SerializeField] Button button;
+    [SerializeField] Button _closeCardButton;
+    [SerializeField] Button _openCardButton;
 
     #region Unity_CallBacks
+    private void Start()
+    {
+        GameController.s_Instance.onHideAllCards += HideCard;
+    }
     private void OnDestroy()
     {
-        button.onClick.RemoveAllListeners();
+        _openCardButton.onClick.RemoveAllListeners();
     }
 
     #endregion
@@ -26,26 +31,42 @@ public class CardPrefab : MonoBehaviour
         _cardImage.sprite = cardData.cardImage;
         gameObject.name = cardData.name;
         onCardClicked = cardClicked;
-        button.onClick.AddListener(OnCardClicked);
+        _openCardButton.onClick.AddListener(OnCardClicked);
     }
 
     void OnCardClicked()
     {
         onCardClicked?.Invoke(data);
-        RotateCard();
+        ShowCard();
     }
 
-    void RotateCard()
+    void ShowCard()
     {
-        LeanTween.rotate(_cardImage.gameObject,new Vector3(0f,90f,0f),0.25f)
-            .setEase(LeanTweenType.easeOutCubic)
-            .setOnComplete(OnRotationCompleted);
+        LeanTween.rotate(hideCardObj.gameObject, new Vector3(0f, 90f, 0f), 0.25f)
+    .setEase(LeanTweenType.easeOutCubic)
+    .setOnComplete(OnShowAnimationCompleted);
 
     }
 
-    void OnRotationCompleted()
+    void OnShowAnimationCompleted()
+    {
+
+        _cardImage.gameObject.SetActive(true);
+        hideCardObj.gameObject.SetActive(false);
+        hideCardObj.transform.rotation = Quaternion.Euler(0, 0, 0);
+        
+    }
+    void HideCard()
+    {
+        LeanTween.rotate(_cardImage.gameObject, new Vector3(0f, 90f, 0f), 0.25f)
+            .setEase(LeanTweenType.easeOutCubic)
+            .setOnComplete(OnHidingCompleted);
+
+    }
+    void OnHidingCompleted()
     {
         _cardImage.gameObject.SetActive(false);
+        _cardImage.transform.rotation = Quaternion.Euler(0,0,0);
         hideCardObj.SetActive(true);
 
     }
