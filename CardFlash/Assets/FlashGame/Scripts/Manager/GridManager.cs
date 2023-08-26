@@ -15,25 +15,31 @@ public class GridManager : MonoBehaviour
         data = AppDataController.s_Instance.GameData;
         AppDataController.s_Instance.onGamMapCreated += CreateGrid;
         GameController.s_Instance.onGameCompleted += GameCompleted;
-
+        GameController.s_Instance.onLoadSavedGame += CreateGridFromSavedMap;
 
     }
 
     public void CreateGrid()
     {
+        CreateGridPlaceHolders();
+        InitCardsWithValues();
+    }
+
+    private void CreateGridPlaceHolders()
+    {
         for (int i = 0; i < data.RowCount; i++)
         {
-          var RowTrans = Instantiate(_rowPrefab, _rowParent).transform;
+            var RowTrans = Instantiate(_rowPrefab, _rowParent).transform;
             for (int j = 0; j < data.ColCount; j++)
             {
-               var cardObj = Instantiate(_cardPrefab, RowTrans);
+                var cardObj = Instantiate(_cardPrefab, RowTrans);
                 cardPrefabs.Add(cardObj);
 
             }
 
         }
-        InitCardsWithValues();
     }
+
     void InitCardsWithValues()
     {
 
@@ -63,7 +69,17 @@ public class GridManager : MonoBehaviour
     }
     void GameCompleted()
     {
-
         cardPrefabs.Clear();
     }
+
+    void CreateGridFromSavedMap()
+    {
+       var Cards = GameMapController.s_Instance.GetRoot.cards;
+        for (int i = 0; i < Cards.Count; i++)
+        {
+
+        }
+
+    }
+
 }

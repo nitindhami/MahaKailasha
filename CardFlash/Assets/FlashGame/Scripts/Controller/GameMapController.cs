@@ -6,6 +6,7 @@ public class GameMapController : MonoBehaviour
     [SerializeField] Root rootMap = new Root();
     [SerializeField] Button saveMapButton;
     [SerializeField] Button LoadGameButton;
+    [SerializeField] Text ErrorText;
     public Root GetRoot { get { return rootMap; } }
 
     public static GameMapController s_Instance;
@@ -21,6 +22,7 @@ public class GameMapController : MonoBehaviour
     }
     void Start()
     {
+        PlayerPrefs.DeleteAll();
         GameController.s_Instance.onMatchFound += OnModifyMatchData;
         GameController.s_Instance.onGameCompleted += ClearGameMap;
         saveMapButton.onClick.AddListener(SaveGameMap);
@@ -47,8 +49,13 @@ public class GameMapController : MonoBehaviour
 
     void LoadGameMap()
     {
+        
+        if (string.IsNullOrEmpty(PlayerPrefs.GetString(Constants.SAVED_GAME_MAP)))
+        {
+            ErrorText.text = Constants.NO_SAVED_MAP;
+            return;
 
-
+        }
 
     }
 

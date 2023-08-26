@@ -14,7 +14,6 @@ public class GameController : MonoBehaviour
     public Action onResetCards;
     public Action onCardClicked;
     public Action onGameCompleted;
-
     [SerializeField] GameStatsManager GameStats;
 
     CardData previousCard = null;
