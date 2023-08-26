@@ -9,7 +9,7 @@ public class CardPrefab : MonoBehaviour
     [SerializeField] GameObject hideCardObj;
     [SerializeField] Button _closeCardButton;
     [SerializeField] Button _openCardButton;
-
+    int myCardIndex;
     bool? isOpen = false;
     CardData data;
     int myCardCode;
@@ -33,13 +33,14 @@ public class CardPrefab : MonoBehaviour
 
     #endregion
 
-    public void Init(CardData cardData,Action<CardData> cardClicked)
+    public void Init(CardData cardData,Action<CardData> cardClicked,int myInd)
     {
         hideCardObj.SetActive(false);
         data = cardData;
         myCardCode = data.CardCode;
         _cardImage.sprite = cardData.cardImage;
         _cardImage.preserveAspect = true;
+        myCardIndex = myInd;
         gameObject.name = cardData.name;
         onCardClicked = cardClicked;
         _openCardButton.onClick.AddListener(OnCardClicked);

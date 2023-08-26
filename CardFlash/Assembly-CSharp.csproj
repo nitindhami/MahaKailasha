@@ -92,6 +92,8 @@
     <Compile Include="Assets/FlashGame/Scripts/Manager/SoundManager.cs" />
     <Compile Include="Assets/FlashGame/Scripts/Manager/MenuScreenManager.cs" />
     <Compile Include="Assets/FlashGame/Scripts/Helpers/RowPrefab.cs" />
+    <Compile Include="Assets/FlashGame/Scripts/Controller/GameMapController.cs" />
+    <Compile Include="Assets/FlashGame/Scripts/Model/SaveModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/LeanTween/ReadMe.txt" />

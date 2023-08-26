@@ -11,9 +11,8 @@ public class AppDataController : MonoBehaviour
     public Action onGamMapCreated;
     public int GameCompletionValue { get{ return (_appData.ColCount * _appData.RowCount)/2; } } 
     public static AppDataController s_Instance;
-
-    [SerializeField] AppData _appData; 
-
+    [SerializeField] AppData _appData;
+   
     #region Unity_CallBacks
     public void Awake()
     {
@@ -33,7 +32,6 @@ public class AppDataController : MonoBehaviour
 
     void ResetAppData()
     {
-        map = string.Empty;
         GameMap.Clear();
         PlayerPrefs.DeleteAll();
 
@@ -55,14 +53,14 @@ public class AppDataController : MonoBehaviour
 
     public IEnumerator CreateFlashSequence()
     {
-
         int totalCount = _appData.ColCount * _appData.RowCount;
-        Debug.Log(totalCount);
         for (int i = 0; i < totalCount; i++)
         {
+
             if (!GameMap.ContainsKey(i))
             {
                 var val = UnityEngine.Random.Range(0,_appData.flashCards.Count);
+              
                 GameMap.Add(i, _appData.flashCards[val]);
                 var randNext = UnityEngine.Random.Range(i+1,totalCount);
 
@@ -72,13 +70,11 @@ public class AppDataController : MonoBehaviour
                     yield return null;
                 }
                 GameMap.Add(randNext, _appData.flashCards[val]);
-                map+= randNext+":"+val+"|";
             }
 
         }
-        Debug.Log(map);
-        PlayerPrefs.SetString(Constants.SAVED_GAME_MAP,map);
+
         onGamMapCreated?.Invoke();
     }
-    string map;
 }
+
