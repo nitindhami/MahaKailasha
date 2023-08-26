@@ -14,7 +14,9 @@ public class GridManager : MonoBehaviour
     {
         data = AppDataController.s_Instance.GameData;
         AppDataController.s_Instance.onGamMapCreated += CreateGrid;
-       
+        GameController.s_Instance.onGameCompleted += GameCompleted;
+
+
     }
 
     public void CreateGrid()
@@ -49,5 +51,10 @@ public class GridManager : MonoBehaviour
     void HideCards() {
 
         GameController.s_Instance.HideCards();
+    }
+    void GameCompleted()
+    {
+
+        cardPrefabs.Clear();
     }
 }

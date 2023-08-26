@@ -20,9 +20,14 @@ public class CardPrefab : MonoBehaviour
         GameController.s_Instance.onHideAllCards += HideCard;
         GameController.s_Instance.onMatchFound += OnMatchFound;
         GameController.s_Instance.onResetCards += ResetCards;
+        GameController.s_Instance.onGameCompleted += Destruction;
     }
     private void OnDestroy()
     {
+        GameController.s_Instance.onHideAllCards -= HideCard;
+        GameController.s_Instance.onMatchFound -= OnMatchFound;
+        GameController.s_Instance.onResetCards -= ResetCards;
+        GameController.s_Instance.onGameCompleted -= Destruction;
         _openCardButton.onClick.RemoveAllListeners();
     }
 
@@ -39,7 +44,13 @@ public class CardPrefab : MonoBehaviour
         onCardClicked = cardClicked;
         _openCardButton.onClick.AddListener(OnCardClicked);
     }
+    // This can be further optimized
+    // But for the time being lets use this.
+    void Destruction()
+    {
+        Destroy(gameObject);
 
+    }
     void OnCardClicked()
     {
         isOpen = true;

@@ -12,8 +12,7 @@ public class AppDataController : MonoBehaviour
     public int GameCompletionValue { get{ return (_appData.ColCount * _appData.RowCount)/2; } } 
     public static AppDataController s_Instance;
 
-    [SerializeField] AppData _appData;
-    Dictionary<int, int> SaveMap =  new Dictionary<int, int>(); 
+    [SerializeField] AppData _appData; 
 
     #region Unity_CallBacks
     public void Awake()
@@ -24,12 +23,31 @@ public class AppDataController : MonoBehaviour
         }
         else
             Destroy(gameObject);
-       StartCoroutine( CreateFlashSequence());
+
+    }
+    private void Start()
+    {
+        GameController.s_Instance.onStartGame += StartGame;
+        GameController.s_Instance.onGameCompleted += ResetAppData;
     }
 
+    void ResetAppData()
+    {
+        map = string.Empty;
+        GameMap.Clear();
+        PlayerPrefs.DeleteAll();
+
+    }
+    void StartGame()
+    {
+        StartCoroutine(CreateFlashSequence());
+
+    }
     private void OnDestroy()
     {
+        
         onGamMapCreated = null;
+
     }
 
     #endregion
@@ -58,7 +76,7 @@ public class AppDataController : MonoBehaviour
             }
 
         }
-       Debug.Log(map);
+        Debug.Log(map);
         PlayerPrefs.SetString(Constants.SAVED_GAME_MAP,map);
         onGamMapCreated?.Invoke();
     }

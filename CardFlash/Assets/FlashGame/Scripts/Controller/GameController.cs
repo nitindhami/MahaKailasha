@@ -5,11 +5,15 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController s_Instance;
+
     public Action onHideAllCards;
     public Action<int> onMatchFound;
+    public Action onStartGame;
+    public Action onLoadSavedGame;
+
     public Action onResetCards;
-    public Action onGameCompleted;
     public Action onCardClicked;
+    public Action onGameCompleted;
 
     [SerializeField] GameStatsManager GameStats;
 
@@ -84,13 +88,15 @@ public class GameController : MonoBehaviour
 
     private void OnTurnCompleted()
     {
-        GameStats.UpdateScore(ScoreCount.ToString());
-        GameStats.UpdateTurns(turnCount.ToString());
 
         if (ScoreCount == AppDataController.s_Instance.GameCompletionValue)
         {
             Debug.Log("Game Has been completed");
+            turnCount = 0;
+            ScoreCount = 0;
             onGameCompleted?.Invoke();
         }
+        GameStats.UpdateScore(ScoreCount.ToString());
+        GameStats.UpdateTurns(turnCount.ToString());
     }
 }
