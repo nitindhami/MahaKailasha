@@ -85,10 +85,27 @@ public class GridManager : MonoBehaviour
         Debug.Log("Cards :"+Cards.Count);
         for (int i = 0; i < Cards.Count; i++)
         {
+           
             var dat = AppDataController.s_Instance.GameData.flashCards[Cards[i].IndexFromFlashCollection];
-            cardPrefabs[i].Init(dat, GameController.s_Instance.FlashCardClicked, i);
+            cardPrefabs[i].Init(dat, GameController.s_Instance.FlashCardClicked, i);         
         }
 
         Invoke("HideCards", Constants.HIDE_CARDS_DURATION);
+        Invoke("DisableOpenedCards",2.25f);
+    }
+    void DisableOpenedCards()
+    {
+        var Cards = GameMapController.s_Instance.GetRoot.cards;
+
+        for (int i = 0; i < Cards.Count; i++)
+        {
+            if (GameMapController.s_Instance.skipList.Contains(i))
+            {
+
+                cardPrefabs[i].DisableCard();
+            }
+        }
+
+
     }
 }

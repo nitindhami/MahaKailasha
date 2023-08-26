@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
         onResetCards = null;
         onGameCompleted = null;
         onCardClicked = null;
+        onLoadSavedGame = null;
     }
     #endregion
 
@@ -59,6 +60,7 @@ public class GameController : MonoBehaviour
     IEnumerator EvaluateData(CardData card)
     {
         yield return new WaitForSeconds(0.18f);
+       
         if (card.CardCode == previousCard.CardCode)
         {
             OnMatchFound(card);
@@ -95,6 +97,7 @@ public class GameController : MonoBehaviour
         }
         GameStats.UpdateScore(ScoreCount.ToString());
         GameStats.UpdateTurns(turnCount.ToString());
+        GameMapController.s_Instance.UpdateScoreAndTurnCount(turnCount,ScoreCount);
     }
 
     public void CompleteGame()
@@ -104,6 +107,7 @@ public class GameController : MonoBehaviour
         onGameCompleted?.Invoke();
         GameStats.UpdateScore(ScoreCount.ToString());
         GameStats.UpdateTurns(turnCount.ToString());
+        GameMapController.s_Instance.UpdateScoreAndTurnCount(turnCount, ScoreCount);
 
     }
 

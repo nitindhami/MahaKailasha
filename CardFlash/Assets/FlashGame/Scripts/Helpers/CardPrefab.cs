@@ -80,7 +80,6 @@ public class CardPrefab : MonoBehaviour
             .setEase(LeanTweenType.easeOutCubic)
             .setOnComplete(OnHidingCompleted);
         isOpen = false;
-
     }
     void OnHidingCompleted()
     {
@@ -95,6 +94,8 @@ public class CardPrefab : MonoBehaviour
         if (cardCode == myCardCode && (isOpen == true))
         {
             DisableCard();
+            Debug.Log("Disabled Card : " + myCardIndex);
+            GameMapController.s_Instance.AddToDisabledCardCollection(myCardIndex);
         }
 
     }
