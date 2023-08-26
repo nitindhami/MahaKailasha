@@ -89,6 +89,8 @@
     <Compile Include="Assets/FlashGame/Scripts/DataContainers/AppData.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingColorTweening.cs" />
     <Compile Include="Assets/FlashGame/Scripts/Controller/GameController.cs" />
+    <Compile Include="Assets/FlashGame/Scripts/Manager/SoundManager.cs" />
+    <Compile Include="Assets/FlashGame/Scripts/Manager/MenuScreenManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/LeanTween/ReadMe.txt" />

@@ -353,6 +353,8 @@
 "Assets/FlashGame/Scripts/Helpers/CardPrefab.cs"
 "Assets/FlashGame/Scripts/Manager/GameStatsManager.cs"
 "Assets/FlashGame/Scripts/Manager/GridManager.cs"
+"Assets/FlashGame/Scripts/Manager/MenuScreenManager.cs"
+"Assets/FlashGame/Scripts/Manager/SoundManager.cs"
 "Assets/LeanTween/Framework/LeanAudio.cs"
 "Assets/LeanTween/Framework/LeanSmooth.cs"
 "Assets/LeanTween/Framework/LeanTest.cs"

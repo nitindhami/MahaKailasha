@@ -9,12 +9,12 @@ public class GameStatsManager : MonoBehaviour
 
     public void UpdateScore(string score)
     {
-        ScroreText.text = "Score" + "\n" + score;
+        ScroreText.text = "Score :" + "\n" + score;
     }
 
     public void UpdateTurns(string turn)
     {
-        TurnTextText.text = "Turns" + "\n" + turn;
+        TurnTextText.text = "Turns :" + "\n" + turn;
     }
 }
 

@@ -9,9 +9,8 @@ public class GameController : MonoBehaviour
     public Action<int> onMatchFound;
     public Action onResetCards;
     public Action onGameCompleted;
+    public Action onCardClicked;
 
-    [SerializeField] AudioSource _dingSource;
-    [SerializeField] AudioSource _wrongSource;
     [SerializeField] GameStatsManager GameStats;
 
     CardData previousCard = null;
@@ -33,6 +32,9 @@ public class GameController : MonoBehaviour
     {
         onHideAllCards = null;
         onMatchFound = null;
+        onResetCards = null;
+        onGameCompleted = null;
+        onCardClicked = null;
     }
     #endregion
 
@@ -42,6 +44,7 @@ public class GameController : MonoBehaviour
     }
     public void FlashCardClicked(CardData card)
     {
+        onCardClicked?.Invoke();
         if (previousCard == null)
         {
             previousCard = card;
@@ -66,7 +69,6 @@ public class GameController : MonoBehaviour
 
     private void OnWrongMatch()
     {
-        _wrongSource.Play();
         onResetCards?.Invoke();
         previousCard = null;
         turnCount++;
@@ -74,7 +76,6 @@ public class GameController : MonoBehaviour
 
     private void OnMatchFound(CardData card)
     {
-        _dingSource.Play();
         onMatchFound?.Invoke(card.CardCode);
         previousCard = null;
         ScoreCount++;

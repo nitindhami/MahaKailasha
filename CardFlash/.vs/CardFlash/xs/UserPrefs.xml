@@ -1,20 +1,22 @@
 ﻿<Properties StartupConfiguration="{4894F270-626D-B895-6D5E-1DED4C6A59E3}|">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="691352bd-613e-44a2-860d-d0f0f797ac5f" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/FlashGame/Scripts/Manager/GameStatsManager.cs">
+    <Files>
+      <File FileName="Assets/FlashGame/Scripts/Helpers/CardPrefab.cs" Line="12" Column="1" />
+      <File FileName="Assets/FlashGame/Scripts/Manager/GridManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/FlashGame/Scripts/Controller/AppDataController.cs" Line="15" Column="39" />
+      <File FileName="Assets/FlashGame/Scripts/Controller/GameController.cs" Line="38" Column="6" />
+      <File FileName="Assets/FlashGame/Scripts/DataContainers/CardData.cs" Line="5" Column="2" />
+      <File FileName="Assets/FlashGame/Scripts/Constants/Constants.cs" Line="5" Column="53" />
+      <File FileName="Assets/FlashGame/Scripts/Manager/GameStatsManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/FlashGame/Scripts/Manager/SoundManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/FlashGame/Scripts/Manager/MenuScreenManager.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="6b95a805-cacb-47c7-add6-e3198c94da09" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/FlashGame/Scripts/Controller/GameController.cs">
-    <Files>
-      <File FileName="Assets/FlashGame/Scripts/Helpers/CardPrefab.cs" Line="71" Column="24" />
-      <File FileName="Assets/FlashGame/Scripts/Manager/GridManager.cs" Line="35" Column="18" />
-      <File FileName="Assets/FlashGame/Scripts/Controller/AppDataController.cs" Line="61" Column="56" />
-      <File FileName="Assets/FlashGame/Scripts/Controller/GameController.cs" Line="53" Column="45" />
-      <File FileName="Assets/FlashGame/Scripts/DataContainers/CardData.cs" Line="4" Column="14" />
-      <File FileName="Assets/FlashGame/Scripts/Constants/Constants.cs" Line="5" Column="39" />
-      <File FileName="Assets/FlashGame/Scripts/Manager/GameStatsManager.cs" Line="12" Column="33" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
 </Properties>
