@@ -74,12 +74,21 @@ public class GridManager : MonoBehaviour
 
     void CreateGridFromSavedMap()
     {
-       var Cards = GameMapController.s_Instance.GetRoot.cards;
-        for (int i = 0; i < Cards.Count; i++)
-        {
 
-        }
+        CreateGridPlaceHolders();
+        InitFromLoadMap();
 
     }
+    void InitFromLoadMap()
+    {
+        var Cards = GameMapController.s_Instance.GetRoot.cards;
+        Debug.Log("Cards :"+Cards.Count);
+        for (int i = 0; i < Cards.Count; i++)
+        {
+            var dat = AppDataController.s_Instance.GameData.flashCards[Cards[i].IndexFromFlashCollection];
+            cardPrefabs[i].Init(dat, GameController.s_Instance.FlashCardClicked, i);
+        }
 
+        Invoke("HideCards", Constants.HIDE_CARDS_DURATION);
+    }
 }

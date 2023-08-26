@@ -33,7 +33,6 @@ public class AppDataController : MonoBehaviour
     void ResetAppData()
     {
         GameMap.Clear();
-        PlayerPrefs.DeleteAll();
 
     }
     void StartGame()

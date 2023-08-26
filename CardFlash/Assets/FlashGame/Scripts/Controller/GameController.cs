@@ -107,4 +107,9 @@ public class GameController : MonoBehaviour
 
     }
 
+  public  void LoadSavedGame()
+  {
+        onLoadSavedGame?.Invoke();
+
+  }
 }

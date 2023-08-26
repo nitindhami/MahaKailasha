@@ -22,7 +22,6 @@ public class GameMapController : MonoBehaviour
     }
     void Start()
     {
-        PlayerPrefs.DeleteAll();
         GameController.s_Instance.onMatchFound += OnModifyMatchData;
         GameController.s_Instance.onGameCompleted += ClearGameMap;
         saveMapButton.onClick.AddListener(SaveGameMap);
@@ -56,7 +55,9 @@ public class GameMapController : MonoBehaviour
             return;
 
         }
-
+        var text = PlayerPrefs.GetString(Constants.SAVED_GAME_MAP);
+        rootMap = JsonUtility.FromJson<Root>(text);
+        GameController.s_Instance.LoadSavedGame();
     }
 
 }

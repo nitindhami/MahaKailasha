@@ -13,6 +13,7 @@ public class MenuScreenManager : MonoBehaviour
     private void Start()
     {
         GameController.s_Instance.onGameCompleted += ShowMenuScreen;
+        GameController.s_Instance.onLoadSavedGame += StartLoadGame;
         playButton.onClick.AddListener(StartGame);
         _homeButton.onClick.AddListener(GoToMenuScreen);
 
@@ -29,10 +30,15 @@ public class MenuScreenManager : MonoBehaviour
 
     void StartGame()
     {
+        StartLoadGame();
+        GameController.s_Instance.onStartGame?.Invoke();
+
+    }
+    void StartLoadGame()
+    {
         _menuScreen.SetActive(false);
         _gameScreen.SetActive(true);
         _menuScreen.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-        GameController.s_Instance.onStartGame?.Invoke();
 
     }
     void GoToMenuScreen()
