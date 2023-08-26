@@ -5,13 +5,14 @@ using UnityEngine.UI;
 public class CardPrefab : MonoBehaviour
 {
     public Action<CardData> onCardClicked;
-    CardData data;
-    int myCardCode;
-    bool? isOpen = false;
     [SerializeField] Image _cardImage;
     [SerializeField] GameObject hideCardObj;
     [SerializeField] Button _closeCardButton;
     [SerializeField] Button _openCardButton;
+
+    bool? isOpen = false;
+    CardData data;
+    int myCardCode;
 
     #region Unity_CallBacks
     private void Start()
@@ -32,8 +33,6 @@ public class CardPrefab : MonoBehaviour
         hideCardObj.SetActive(false);
         data = cardData;
         myCardCode = data.CardCode;
-        data.Card = this;
-        cardData.cardObj = gameObject;
         _cardImage.sprite = cardData.cardImage;
         _cardImage.preserveAspect = true;
         gameObject.name = cardData.name;
@@ -89,7 +88,6 @@ public class CardPrefab : MonoBehaviour
     }
     public void DisableCard()
     {
-        Debug.Log("DisableCard");
         _cardImage.gameObject.SetActive(false);
         hideCardObj.SetActive(false);
         isOpen = null;

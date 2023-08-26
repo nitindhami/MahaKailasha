@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class AppDataController : MonoBehaviour
 {
-    [SerializeField] AppData _appData;
 
     public AppData GameData { get { return _appData; } }
     public Dictionary<int, CardData> GameMap = new Dictionary<int, CardData>();
-    Dictionary<int, int> SaveMap =  new Dictionary<int, int>(); 
     public Action onGamMapCreated;
-    
+    public int GameCompletionValue { get{ return (_appData.ColCount * _appData.RowCount)/2; } } 
     public static AppDataController s_Instance;
+
+    [SerializeField] AppData _appData;
+    Dictionary<int, int> SaveMap =  new Dictionary<int, int>(); 
 
     #region Unity_CallBacks
     public void Awake()

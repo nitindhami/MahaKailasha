@@ -5,15 +5,19 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController s_Instance;
-    [SerializeField] AudioSource _dingSource;
-    [SerializeField] AudioSource _wrongSource;
-    [SerializeField] GameStatsManager GameStats;
-    int turnCount=0;
-    int ScoreCount=0;
-    CardData previousCard = null;
     public Action onHideAllCards;
     public Action<int> onMatchFound;
     public Action onResetCards;
+    public Action onGameCompleted;
+
+    [SerializeField] AudioSource _dingSource;
+    [SerializeField] AudioSource _wrongSource;
+    [SerializeField] GameStatsManager GameStats;
+
+    CardData previousCard = null;
+    int ScoreCount=0;
+    int turnCount=0;
+
     #region Unity_CallBack
 
     private void Awake()
@@ -31,20 +35,18 @@ public class GameController : MonoBehaviour
         onMatchFound = null;
     }
     #endregion
+
     public void HideCards()
     {
         onHideAllCards?.Invoke();
     }
     public void FlashCardClicked(CardData card)
     {
-
-         Debug.Log(card.cardObj.name);
         if (previousCard == null)
         {
             previousCard = card;
             return;
         }
-
         StartCoroutine(EvaluateData(card));
     }
 
@@ -53,25 +55,41 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(0.18f);
         if (card.CardCode == previousCard.CardCode)
         {
-            
-            _dingSource.Play();
-            Debug.Log("Match Found:");
-            onMatchFound?.Invoke(card.CardCode);
-            previousCard = null;
-            ScoreCount++;
-            turnCount++;
+            OnMatchFound(card);
 
         }
         else
-        {
-            _wrongSource.Play();
-            Debug.Log("Not Found:");
-            onResetCards?.Invoke();
-            previousCard = null;
-            turnCount++;
-        }
+          OnWrongMatch();       
+
+        OnTurnCompleted();
+    }
+
+    private void OnWrongMatch()
+    {
+        _wrongSource.Play();
+        onResetCards?.Invoke();
+        previousCard = null;
+        turnCount++;
+    }
+
+    private void OnMatchFound(CardData card)
+    {
+        _dingSource.Play();
+        onMatchFound?.Invoke(card.CardCode);
+        previousCard = null;
+        ScoreCount++;
+        turnCount++;
+    }
+
+    private void OnTurnCompleted()
+    {
         GameStats.UpdateScore(ScoreCount.ToString());
         GameStats.UpdateTurns(turnCount.ToString());
 
+        if (ScoreCount == AppDataController.s_Instance.GameCompletionValue)
+        {
+            Debug.Log("Game Has been completed");
+            onGameCompleted?.Invoke();
+        }
     }
 }
